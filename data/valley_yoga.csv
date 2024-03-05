@@ -1,0 +1,10 @@
+,id,title,start,end,ActivityInstanceID,ActivityID,ResourceScheduleId,StartDatetime,AvailableSlots,Capacity,FacilityLocationID,ClubId,ProductID,Duration,ActivityName,FacilityName,WaitingListType,WaitingListEnabledForOnline,WaitingListCapacity,OnWaitingList,OnClass,InBasket,InstructorName,AllowGuestBooking,HasQuestions,AgeStart,AgeEnd,RestrictedGenderId,ContactGroupMemberBookingStatuses,TicketTypes,MediaItems.ClassDetailsHeaderItems,MediaItems.ClassDetailsDescriptionItems
+0,0,YOGA,2024-03-03T11:30:00,2024-03-03T12:30:00,1343699,790,2143349,2024-03-03T11:30:00,0,24,1917,7,2215,60,YOGA,Valley,5,True,0,False,False,False,Anne,False,False,192,1800,,[],,[],
+1,0,YOGA,2024-03-04T10:00:00,2024-03-04T11:00:00,1340790,790,2133637,2024-03-04T10:00:00,1,24,1917,7,2215,60,YOGA,Valley,5,True,0,False,False,False,Anne,False,False,192,1800,,[],,[],
+2,0,YOGA,2024-03-04T11:15:00,2024-03-04T12:15:00,1340841,790,2133792,2024-03-04T11:15:00,0,24,1917,7,2215,60,YOGA,Valley,5,True,0,False,False,False,Anne,False,False,192,1800,,[],,[],
+3,0,YOGA,2024-03-05T18:00:00,2024-03-05T19:00:00,1388236,790,2250899,2024-03-05T18:00:00,0,24,1917,7,2215,60,YOGA,Valley,5,True,0,False,False,False,Jaynie,False,False,192,1800,,[],,[],
+4,0,YOGA,2024-03-05T19:15:00,2024-03-05T20:15:00,1388247,790,2250932,2024-03-05T19:15:00,0,24,1917,7,2215,60,YOGA,Valley,5,True,0,False,False,False,Tom,False,False,192,1800,,[],,[],
+5,0,YOGA,2024-03-06T10:00:00,2024-03-06T11:00:00,1342331,790,2139025,2024-03-06T10:00:00,0,24,1917,7,2215,60,YOGA,Valley,5,True,0,False,False,False,Amy,False,False,192,1800,,[],,[],
+6,0,YOGA,2024-03-06T11:15:00,2024-03-06T12:15:00,1342378,790,2139176,2024-03-06T11:15:00,8,24,1917,7,2215,60,YOGA,Valley,5,True,0,False,False,False,Tom,False,False,192,1800,,[],,[],
+7,0,YOGA,2024-03-07T19:00:00,2024-03-07T20:00:00,1356200,790,2175640,2024-03-07T19:00:00,0,24,1917,7,2215,60,YOGA,Valley,5,True,0,False,False,False,Anne,False,False,192,1800,,[],,[],
+8,0,YOGA,2024-03-08T10:00:00,2024-03-08T11:00:00,1340424,790,2132386,2024-03-08T10:00:00,0,24,1917,7,2215,60,YOGA,Valley,5,True,0,False,False,False,Anne,False,False,192,1800,,[],,[],
