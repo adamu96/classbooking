@@ -12,6 +12,7 @@ RUN pip install Flask gunicorn
 RUN pip install pandas
 RUN pip install -U Flask-SQLAlchemy
 RUN pip install google-cloud-bigquery
+RUN pip install db-dtypes
 
 # Run the web service on container startup. Here we use the gunicorn
 # webserver, with one worker process and 8 threads.
