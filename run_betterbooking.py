@@ -1,7 +1,7 @@
 import better
 import pandas as pd
 from datetime import datetime, timedelta
-
+from time import sleep
 # credentials
 auth = 'Bearer v4.local.EKvZbFP4m02EQHaGJzp-J3nzRPCx_rPl_zrBTfbDH-xn5BC1oDZb1yvYup9sJAO94OxRrmYJcSYuP44Qy3aFl3LnVmPCYkiWOvhcvc2sKxtf3L-Jm5qFBlu7rvng6s2JlXB5bwDR1Edni0H92Kq-9eF_qI6MoVC3lW8RbIN1sxuBEwO409_OWylGyf-WW6Clghp-3czmAq7SlZzfUA'
 member_id = 2945507
@@ -9,7 +9,9 @@ member_id = 2945507
 next_week = datetime.today() + timedelta(days=7)
 date = next_week.strftime('%Y-%m-%d')
 # TODO: wait until 10 pm to book
-
+while datetime.today().time() < datetime.strptime('22', "%H").time():
+    sleep(1)
+    
 # TODO: get preferences for datetime/court
 # TODO: the code should only book a time if the day is included in preferences
 datetime_preferences = pd.DataFrame({'day': [1, 1, 1, 1, 1], 'hour': [19, 20, 18, 21, 17], 'priority': [1, 2, 3, 4, 5]})

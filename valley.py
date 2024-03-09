@@ -1,4 +1,3 @@
-import bs4
 import requests
 import pandas as pd
 import json
@@ -78,7 +77,8 @@ def getAvailableSlots():
 
     response_json = json.loads(response.text)
     slots = pd.json_normalize(response_json['Results'])
-    return slots[['ActivityInstanceID', 'title', 'start', 'AvailableSlots']]
+    slots['datetime'] = pd.to_datetime(slots['start'], format='%Y-%m-%dT%H:%M:%S')
+    return slots[['ActivityInstanceID', 'title', 'datetime', 'AvailableSlots']]
 
 def addToBasket(activity_id, activity_name):
     headers = {
@@ -117,7 +117,8 @@ def addToBasket(activity_id, activity_name):
             data=data,
         )
 
-    return response.text
+    print(response.text)
+    return 
 
 def checkout():
     headers = {
@@ -149,7 +150,8 @@ def checkout():
             headers=headers,
         )
 
-    return response.text
+    print(response.text)
+    return
 
 def viewBookings():
     headers = {
