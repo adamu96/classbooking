@@ -15,4 +15,4 @@ member_id = 2945507
 
 # TODO: factor in request verification token for user
 
-print(datetime.today().time() < datetime.strptime('22', "%H").time())
+print()

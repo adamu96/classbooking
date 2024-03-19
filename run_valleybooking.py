@@ -24,5 +24,3 @@ if not preferences[preferences['day'] == current_weekday].empty:
     valley.checkout()
     
     # TODO: check for errors
-
-    # TODO: add to google calendar?
