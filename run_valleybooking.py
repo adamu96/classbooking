@@ -1,9 +1,11 @@
 import valley
 import pandas as pd
 from datetime import datetime, timedelta
+from time import sleep
 
-# TODO: wait until 6AM
-
+# TODO: wait until 10 pm to book
+while datetime.today().time() < datetime.strptime('06', "%H").time():
+    sleep(1)
 
 current_weekday = datetime.today().isoweekday()
 preferences = pd.DataFrame({'day': [2, 4, 5], 'activity': ['PILATES', 'PILATES', 'YOGA'], 'time': [10, 10, 10]})
