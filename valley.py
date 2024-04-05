@@ -117,8 +117,7 @@ def addToBasket(activity_id, activity_name):
             data=data,
         )
 
-    print(response.text)
-    return 
+    return response.text
 
 def checkout():
     headers = {
@@ -150,8 +149,7 @@ def checkout():
             headers=headers,
         )
 
-    print(response.text)
-    return
+    return response.text
 
 def viewBookings():
     headers = {

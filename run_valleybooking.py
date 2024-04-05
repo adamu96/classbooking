@@ -2,8 +2,12 @@ import valley
 import pandas as pd
 from datetime import datetime, timedelta
 from time import sleep
+import json
 
-# TODO: wait until 10 pm to book
+# TODO: wait until 6 am to book
+# note, extra while loop to stop programme from running if starting before midnight 
+# while datetime.today().time() > datetime.strptime('06', "%H").time():
+#     sleep(1)
 while datetime.today().time() < datetime.strptime('06', "%H").time():
     sleep(1)
 
@@ -22,7 +26,11 @@ if not preferences[preferences['day'] == current_weekday].empty:
                         (slots['datetime'].dt.date == booking_date) &
                         (slots['title'] == activity_name)].ActivityInstanceID.values[0]
 
-    valley.addToBasket(activity_id, activity_name)
-    valley.checkout()
+    basket = json.loads(valley.addToBasket(activity_id, activity_name))
+
+    if basket['Success']:
+        checkout = valley.checkout()
+        if "paymentconfirmation" in checkout:
+            print('Booking Confirmed:', activity_name, booking_date, activity_time)
+    else: print('Error:', basket['ErrorMessage'], '(', activity_name, booking_date, activity_time, ')')
     
-    # TODO: check for errors
