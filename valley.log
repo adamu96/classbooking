@@ -1,0 +1,13 @@
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): antrimandnewtownabbey.legendonlineservices.co.uk:443
+DEBUG:urllib3.connectionpool:https://antrimandnewtownabbey.legendonlineservices.co.uk:443 "POST /valley/Timetable/GetClassTimeTable HTTP/1.1" 200 1630
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): antrimandnewtownabbey.legendonlineservices.co.uk:443
+DEBUG:urllib3.connectionpool:https://antrimandnewtownabbey.legendonlineservices.co.uk:443 "POST /valley/account/processloginrequest HTTP/1.1" 200 193
+DEBUG:urllib3.connectionpool:https://antrimandnewtownabbey.legendonlineservices.co.uk:443 "POST /valley/Timetable/AddClassBookingToBasket HTTP/1.1" 200 205
+ERROR:__main__:You are already booked into this activtiy (YOGA 2024-04-12 10:00)
+INFO:__main__:Running Booking: 2024-04-05 07:28:21.401276
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): antrimandnewtownabbey.legendonlineservices.co.uk:443
+DEBUG:urllib3.connectionpool:https://antrimandnewtownabbey.legendonlineservices.co.uk:443 "POST /valley/Timetable/GetClassTimeTable HTTP/1.1" 200 1630
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): antrimandnewtownabbey.legendonlineservices.co.uk:443
+DEBUG:urllib3.connectionpool:https://antrimandnewtownabbey.legendonlineservices.co.uk:443 "POST /valley/account/processloginrequest HTTP/1.1" 200 193
+DEBUG:urllib3.connectionpool:https://antrimandnewtownabbey.legendonlineservices.co.uk:443 "POST /valley/Timetable/AddClassBookingToBasket HTTP/1.1" 200 205
+ERROR:__main__:You are already booked into this activtiy (YOGA 2024-04-12 10:00)

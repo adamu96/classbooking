@@ -10,15 +10,9 @@ import requests
 from datetime import datetime, timedelta
 # client = bigquery.Client.from_service_account_json('key.json')
 
-auth = 'Bearer v4.local.EKvZbFP4m02EQHaGJzp-J3nzRPCx_rPl_zrBTfbDH-xn5BC1oDZb1yvYup9sJAO94OxRrmYJcSYuP44Qy3aFl3LnVmPCYkiWOvhcvc2sKxtf3L-Jm5qFBlu7rvng6s2JlXB5bwDR1Edni0H92Kq-9eF_qI6MoVC3lW8RbIN1sxuBEwO409_OWylGyf-WW6Clghp-3czmAq7SlZzfUA'
-member_id = 2945507
 
-success_dict = json.loads('{"Success":true,"ErrorMessage":null,"ErrorCode":0,"Data":{"Id":981670,"BasketId":0,"ItemId":0,"Description":null,"ItemSourceId":2034132,"ItemType":0,"Children":null,"ExtId":null}}')
+logger.debug('This message should go to the log file')
+logger.info('So should this')
+logger.warning('And this, too')
+logger.error('And non-ASCII stuff, too, like Øresund and Malmö')
 
-if success_dict['Success'] == True:
-    print('success')
-
-pay_conf = "/valley/universalbasket/paymentconfirmation/8IKmQKmJuqlYMaiEe-DjUA"
-
-if "paymentconfirmation" in pay_conf:
-    print('true')

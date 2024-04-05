@@ -3,14 +3,19 @@ import pandas as pd
 from datetime import datetime, timedelta
 from time import sleep
 import json
+import logging
+
+logger = logging.getLogger(__name__)
+logging.basicConfig(filename='valley.log', encoding='utf-8', level=logging.DEBUG)
 
 # TODO: wait until 6 am to book
 # note, extra while loop to stop programme from running if starting before midnight 
-# while datetime.today().time() > datetime.strptime('06', "%H").time():
-#     sleep(1)
+while datetime.today().time() > datetime.strptime('06', "%H").time():
+    sleep(1)
 while datetime.today().time() < datetime.strptime('06', "%H").time():
     sleep(1)
 
+logger.info(f'Running Booking: {datetime.today()}')
 current_weekday = datetime.today().isoweekday()
 preferences = pd.DataFrame({'day': [2, 4, 5], 'activity': ['PILATES', 'PILATES', 'YOGA'], 'time': [10, 10, 10]})
 
@@ -31,6 +36,6 @@ if not preferences[preferences['day'] == current_weekday].empty:
     if basket['Success']:
         checkout = valley.checkout()
         if "paymentconfirmation" in checkout:
-            print('Booking Confirmed:', activity_name, booking_date, activity_time)
-    else: print('Error:', basket['ErrorMessage'], '(', activity_name, booking_date, activity_time, ')')
+            logger.info(f'Booking Confirmed: {activity_name} {booking_date} {activity_time}')
+    else: logger.error(f'{basket["ErrorMessage"]} ({activity_name} {booking_date} {activity_time}:00)')
     
