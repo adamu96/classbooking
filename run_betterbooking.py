@@ -8,6 +8,7 @@ member_id = 2945507
 
 next_week = datetime.today() + timedelta(days=7)
 date = next_week.strftime('%Y-%m-%d')
+
 # TODO: wait until 10 pm to book
 while datetime.today().time() < datetime.strptime('22', "%H").time():
     sleep(1)
