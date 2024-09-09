@@ -5,6 +5,8 @@ from time import sleep
 # credentials
 auth = 'Bearer v4.local.EKvZbFP4m02EQHaGJzp-J3nzRPCx_rPl_zrBTfbDH-xn5BC1oDZb1yvYup9sJAO94OxRrmYJcSYuP44Qy3aFl3LnVmPCYkiWOvhcvc2sKxtf3L-Jm5qFBlu7rvng6s2JlXB5bwDR1Edni0H92Kq-9eF_qI6MoVC3lW8RbIN1sxuBEwO409_OWylGyf-WW6Clghp-3czmAq7SlZzfUA'
 member_id = 2945507
+gym = 'indoor-tennis-centre-and-ozone-complex'
+activity = 'tennis-court-indoor'
 
 next_week = datetime.today() + timedelta(days=7)
 date = next_week.strftime('%Y-%m-%d')
@@ -20,7 +22,7 @@ datetime_preferences = pd.DataFrame({'day': [1, 1, 1, 1, 1], 'hour': [19, 20, 18
 court_preferences = pd.DataFrame({'court': [1, 2, 3, 4], 'priority': [4, 1, 2, 3]})
 
 # check available spaces and order by priority
-priority_slots = pd.merge(better.getAvailableSlots(auth, date), datetime_preferences, on='hour', how='inner').sort_values(by='priority')
+priority_slots = pd.merge(better.getAvailableSlots(auth, date, gym, activity), datetime_preferences, on='hour', how='inner').sort_values(by='priority')
 
 booking_successful = 0
 tries = 0
