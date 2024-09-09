@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 from time import sleep
 # credentials
 auth = 'Bearer v4.local.lGjbgJkKYg5SUUDc19vuFS3HxiElCsHhyR8i2lxQdeuxmtXJRdyyEY1CVCq76PvVrMIiAiJRWDwX1QObu7TeXU9VF8g4hNDHZ_LniNePjiRnKAkUb74pQfo4ZxWs1YPYhF8uAq5dnipONDkyk0QWua1Cq-0buufkHY3FNwxqq0nBlz_CJRSx2YmB_azs-zrgR1ptMwTyrNqNxOed4w'
-member_id = 2
+member_id = 2848350
 gym = 'better-gym-connswater'
 activity = 'fitness-classes-c'
 
@@ -32,7 +32,7 @@ booking_successful = 0
 tries = 0
 while not booking_successful:
     if class_slots['spaces'] > 0:
-        print(better.addToBasket(auth, member_id, session['session_id'], date, slot['hour']))
+        print(better.addToBasket(auth, member_id, class_slots['id'], date, class_slots['hour']))
 exit()
 booking_successful = 0
 tries = 0

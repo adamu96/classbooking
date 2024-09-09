@@ -49,6 +49,43 @@ def connswaterClasses(auth, date, gym, activity):
     
     return sessions_df
 
+def connswaterAddtoBasket(auth, member_id, session_id: int, date):
+    headers = {
+        'accept': 'application/json',
+        'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8',
+        'authorization': auth,
+        'content-type': 'application/json',
+        'origin': 'https://bookings.better.org.uk',
+        'priority': 'u=1, i',
+        'referer': f'https://bookings.better.org.uk/location/better-gym-connswater/fitness-classes-c/{date}/by-time/class/{session_id}',
+        'sec-ch-ua': '"Chromium";v="128", "Not;A=Brand";v="24", "Google Chrome";v="128"',
+        'sec-ch-ua-mobile': '?0',
+        'sec-ch-ua-platform': '"macOS"',
+        'sec-fetch-dest': 'empty',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-site': 'cross-site',
+        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36',
+    }
+
+    json_data = {
+        'items': [
+            {
+                'id': session_id,
+                'type': 'activity',
+                'pricing_option_id': 7,
+                'apply_benefit': True,
+                'activity_restriction_ids': [],
+            },
+        ],
+        'membership_user_id': member_id,
+        'selected_user_id': None,
+    }
+
+    response = requests.post('https://better-admin.org.uk/api/activities/cart/add', headers=headers, json=json_data)
+
+    return response.text
+
+
 def cleanseResponse(response):
     """
     Cleans the text response for processing
