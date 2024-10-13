@@ -1,7 +1,6 @@
 import better
 import pandas as pd
 from datetime import datetime, timedelta
-from time import sleep
 from googleapi import addCalendarEvent, sendGmail
 
 
