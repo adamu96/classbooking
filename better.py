@@ -23,7 +23,7 @@ def connswaterClasses(auth, date, gym, activity):
     }
 
     params = {
-        'date': '2024-09-11',
+        'date': date,
     }
 
     response = requests.get(
@@ -49,7 +49,7 @@ def connswaterClasses(auth, date, gym, activity):
     
     return sessions_df
 
-def connswaterAddtoBasket(auth, member_id, session_id: int, date):
+def connswaterAddtoBasket(auth, member_id, session_id, date):
     headers = {
         'accept': 'application/json',
         'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8',
@@ -85,31 +85,33 @@ def connswaterAddtoBasket(auth, member_id, session_id: int, date):
 
     return response.text
 
-
 def cleanseResponse(response):
     """
     Cleans the text response for processing
     """
     return response.replace('{"data":', "").replace('false', "False").replace('null', '"null"').replace('true', "True")
 
-def getAvailableSlots(auth, date, gym, activity):
+def getAvailableSlots(auth, date):
     """
     Gets available slots for a given day
     """
+
+    import requests
+
     headers = {
-        'authority': 'better-admin.org.uk',
         'accept': 'application/json',
         'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8',
         'authorization': auth,
         'origin': 'https://bookings.better.org.uk',
-        'referer': f'https://bookings.better.org.uk/location/{gym}/{activity}/{date}/by-time',
-        'sec-ch-ua': '"Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"',
+        'priority': 'u=1, i',
+        'referer': f'https://bookings.better.org.uk/location/indoor-tennis-centre-and-ozone-complex/tennis-court-indoor/{date}/by-time',
+        'sec-ch-ua': '"Google Chrome";v="129", "Not=A?Brand";v="8", "Chromium";v="129"',
         'sec-ch-ua-mobile': '?0',
         'sec-ch-ua-platform': '"macOS"',
         'sec-fetch-dest': 'empty',
         'sec-fetch-mode': 'cors',
         'sec-fetch-site': 'cross-site',
-        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
+        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36',
     }
 
     params = {
@@ -117,7 +119,7 @@ def getAvailableSlots(auth, date, gym, activity):
     }
 
     response = requests.get(
-        'https://better-admin.org.uk/api/activities/venue/{gym}/activity/{activity}/times',
+        'https://better-admin.org.uk/api/activities/venue/indoor-tennis-centre-and-ozone-complex/activity/tennis-court-indoor/times',
         params=params,
         headers=headers,
     )
@@ -303,4 +305,4 @@ def viewBookings(auth):
 
 
 if __name__ == '__main__':
-    print(getAvailableSlots('2024-02-20'))
+    pass
