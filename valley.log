@@ -213,3 +213,37 @@ DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): antrimandnewtown
 DEBUG:urllib3.connectionpool:https://antrimandnewtownabbey.legendonlineservices.co.uk:443 "POST /valley/account/processloginrequest HTTP/1.1" 200 193
 DEBUG:urllib3.connectionpool:https://antrimandnewtownabbey.legendonlineservices.co.uk:443 "POST /valley/cart/confirmbasket HTTP/1.1" 200 184
 INFO:__main__:Booking Confirmed: PILATES 2024-06-04 10
+INFO:__main__:Running Booking: 2024-05-30 06:02:06.002437
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): antrimandnewtownabbey.legendonlineservices.co.uk:443
+DEBUG:urllib3.connectionpool:https://antrimandnewtownabbey.legendonlineservices.co.uk:443 "POST /valley/Timetable/GetClassTimeTable HTTP/1.1" 200 1847
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): antrimandnewtownabbey.legendonlineservices.co.uk:443
+DEBUG:urllib3.connectionpool:https://antrimandnewtownabbey.legendonlineservices.co.uk:443 "POST /valley/account/processloginrequest HTTP/1.1" 200 193
+DEBUG:urllib3.connectionpool:https://antrimandnewtownabbey.legendonlineservices.co.uk:443 "POST /valley/Timetable/AddClassBookingToBasket HTTP/1.1" 200 246
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): antrimandnewtownabbey.legendonlineservices.co.uk:443
+DEBUG:urllib3.connectionpool:https://antrimandnewtownabbey.legendonlineservices.co.uk:443 "POST /valley/account/processloginrequest HTTP/1.1" 200 193
+DEBUG:urllib3.connectionpool:https://antrimandnewtownabbey.legendonlineservices.co.uk:443 "POST /valley/cart/confirmbasket HTTP/1.1" 200 184
+INFO:__main__:Booking Confirmed: PILATES 2024-06-06 10
+INFO:__main__:Running Booking: 2024-06-04 06:14:25.775518
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): antrimandnewtownabbey.legendonlineservices.co.uk:443
+DEBUG:urllib3.connectionpool:https://antrimandnewtownabbey.legendonlineservices.co.uk:443 "POST /valley/Timetable/GetClassTimeTable HTTP/1.1" 200 1957
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): antrimandnewtownabbey.legendonlineservices.co.uk:443
+DEBUG:urllib3.connectionpool:https://antrimandnewtownabbey.legendonlineservices.co.uk:443 "POST /valley/account/processloginrequest HTTP/1.1" 200 193
+DEBUG:urllib3.connectionpool:https://antrimandnewtownabbey.legendonlineservices.co.uk:443 "POST /valley/Timetable/AddClassBookingToBasket HTTP/1.1" 200 205
+ERROR:__main__:You are already booked into this activtiy (PILATES 2024-06-11 10:00)
+INFO:__main__:Running Booking: 2024-06-06 22:05:37.251765
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): antrimandnewtownabbey.legendonlineservices.co.uk:443
+DEBUG:urllib3.connectionpool:https://antrimandnewtownabbey.legendonlineservices.co.uk:443 "POST /valley/Timetable/GetClassTimeTable HTTP/1.1" 200 1675
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): antrimandnewtownabbey.legendonlineservices.co.uk:443
+DEBUG:urllib3.connectionpool:https://antrimandnewtownabbey.legendonlineservices.co.uk:443 "POST /valley/account/processloginrequest HTTP/1.1" 200 193
+DEBUG:urllib3.connectionpool:https://antrimandnewtownabbey.legendonlineservices.co.uk:443 "POST /valley/Timetable/AddClassBookingToBasket HTTP/1.1" 200 212
+ERROR:__main__:This schedule has reached its maximum capacity. (-1) (PILATES 2024-06-13 10:00)
+INFO:__main__:Running Booking: 2024-06-07 08:31:39.817951
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): antrimandnewtownabbey.legendonlineservices.co.uk:443
+DEBUG:urllib3.connectionpool:https://antrimandnewtownabbey.legendonlineservices.co.uk:443 "POST /valley/Timetable/GetClassTimeTable HTTP/1.1" 200 1743
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): antrimandnewtownabbey.legendonlineservices.co.uk:443
+DEBUG:urllib3.connectionpool:https://antrimandnewtownabbey.legendonlineservices.co.uk:443 "POST /valley/account/processloginrequest HTTP/1.1" 200 193
+DEBUG:urllib3.connectionpool:https://antrimandnewtownabbey.legendonlineservices.co.uk:443 "POST /valley/Timetable/AddClassBookingToBasket HTTP/1.1" 200 205
+ERROR:__main__:You are already booked into this activtiy (YOGA 2024-06-14 10:00)
+INFO:__main__:Running Booking: 2024-06-09 15:06:14.812860
+INFO:__main__:Running Booking: 2024-06-09 15:08:02.351994
+INFO:__main__:Running Booking: 2024-06-09 15:16:33.519613
