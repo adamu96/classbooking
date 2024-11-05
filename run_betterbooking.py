@@ -1,26 +1,36 @@
 import better
 import pandas as pd
 from datetime import datetime, timedelta
-from time import sleep
+from googleapi import addCalendarEvent, sendGmail
+
+
 # credentials
-auth = 'Bearer v4.local.EKvZbFP4m02EQHaGJzp-J3nzRPCx_rPl_zrBTfbDH-xn5BC1oDZb1yvYup9sJAO94OxRrmYJcSYuP44Qy3aFl3LnVmPCYkiWOvhcvc2sKxtf3L-Jm5qFBlu7rvng6s2JlXB5bwDR1Edni0H92Kq-9eF_qI6MoVC3lW8RbIN1sxuBEwO409_OWylGyf-WW6Clghp-3czmAq7SlZzfUA'
+auth = 'Bearer v4.local.TnetacOmHtfxrQasRrhSt33erWXrwXkuYAg7aZHaSzdiUADnVnscZjOKPMraRycryVe0TGcjUKhmyy089YouaHUSMJctU-Bo8TIcJbYg-VZyPBc-odh5Ywq8OuNvWqgQqIif5OjeNNKnhm-4onpqwKv4i7wpGxqElRxB71bTuB5aV52CKduLWkIZl8AUHnyb_GWe5y07OFsakJVhbA'
 member_id = 2945507
+gym = 'indoor-tennis-centre-and-ozone-complex'
+activity = 'tennis-court-indoor'
 
 next_week = datetime.today() + timedelta(days=7)
 date = next_week.strftime('%Y-%m-%d')
-
-# TODO: wait until 10 pm to book
-while datetime.today().time() < datetime.strptime('22', "%H").time():
-    sleep(1)
+day_name = next_week.strftime('%A')
     
 # TODO: get preferences for datetime/court
 # TODO: the code should only book a time if the day is included in preferences
-datetime_preferences = pd.DataFrame({'day': [1, 1, 1, 1, 1], 'hour': [19, 20, 18, 21, 17], 'priority': [1, 2, 3, 4, 5]})
-# datetime_preferences = pd.DataFrame({'day': [1, 1, 1, 1, 1], 'hour': [11, 10, 12, 13, 9], 'priority': [1, 2, 3, 4, 5]})
-court_preferences = pd.DataFrame({'court': [1, 2, 3, 4], 'priority': [4, 1, 2, 3]})
+if day_name == 'Saturday' or day_name == 'Sunday': datetime_preferences = pd.DataFrame({'hour': [11, 10, 12, 13, 9],
+                                                                                        'priority': [1, 2, 3, 4, 5]})
+else: datetime_preferences = pd.DataFrame({'hour': [19, 20, 18, 21, 17],
+                                           'priority': [1, 2, 3, 4, 5]})
+
+court_preferences = pd.DataFrame({'court': [1, 2, 3, 4], 
+                                  'priority': [4, 1, 2, 3]})
 
 # check available spaces and order by priority
-priority_slots = pd.merge(better.getAvailableSlots(auth, date), datetime_preferences, on='hour', how='inner').sort_values(by='priority')
+try:
+    priority_slots = pd.merge(better.getAvailableSlots(auth, date),
+                          datetime_preferences, on='hour', how='inner').sort_values(by='priority')
+except:
+    print('date outside of visible dates')
+    exit()
 
 booking_successful = 0
 tries = 0
@@ -41,7 +51,17 @@ while not booking_successful:
                             print('basket empty')
                         else:
                             booking_successful = 1
-                            break
+                            print('booking successful')
+                            addCalendarEvent(title='Tennis (auto)',
+                                    location='Ormeau Tennis Courts',
+                                    description=f'Court: {court}',
+                                    start= f'{date}T{str(slot["hour"])}'+':00:00',
+                                    end=f'{date}T{str(slot["hour"]+1)}'+':00:00',
+                                    attendees='margretbarclay10@gmail.com')
+                            sendGmail(date=date,
+                                      time=str(slot['hour'])+':00',
+                                      recipients="adam.urquhart96@gmail.com, margretbarclay10@gmail.com")
+                            exit()
                 if booking_successful:
                     break
         if booking_successful:
@@ -50,6 +70,4 @@ while not booking_successful:
     if tries >= 20: break
     print('attempt:', tries)
 
-
 if booking_successful == 0: print('no options available')
-else: print('booking successful')

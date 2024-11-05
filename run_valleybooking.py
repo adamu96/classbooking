@@ -16,7 +16,12 @@ preferences = pd.DataFrame({'day': [2, 4, 5], 'activity': ['PILATES', 'PILATES',
 if not preferences[preferences['day'] == current_weekday].empty:
     activity_name = preferences[preferences.day == current_weekday].activity.values[0]
     activity_time = preferences[preferences.day == current_weekday].time.values[0]
+if not preferences[preferences['day'] == current_weekday].empty:
+    activity_name = preferences[preferences.day == current_weekday].activity.values[0]
+    activity_time = preferences[preferences.day == current_weekday].time.values[0]
 
+    booking_date = datetime.today() + timedelta(days=7)
+    booking_date = booking_date.date()
     booking_date = datetime.today() + timedelta(days=7)
     booking_date = booking_date.date()
 
@@ -24,7 +29,12 @@ if not preferences[preferences['day'] == current_weekday].empty:
     activity_id = slots[(slots['datetime'].dt.hour == activity_time) &
                         (slots['datetime'].dt.date == booking_date) &
                         (slots['title'] == activity_name)].ActivityInstanceID.values[0]
+    slots = valley.getAvailableSlots()
+    activity_id = slots[(slots['datetime'].dt.hour == activity_time) &
+                        (slots['datetime'].dt.date == booking_date) &
+                        (slots['title'] == activity_name)].ActivityInstanceID.values[0]
 
+    basket = json.loads(valley.addToBasket(activity_id, activity_name))
     basket = json.loads(valley.addToBasket(activity_id, activity_name))
 
     if basket['Success']:

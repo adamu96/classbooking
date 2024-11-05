@@ -96,8 +96,10 @@ def getAvailableSlots(auth, date, gym, activity):
     """
     Gets available slots for a given day
     """
+
+    import requests
+
     headers = {
-        'authority': 'better-admin.org.uk',
         'accept': 'application/json',
         'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8',
         'authorization': auth,
@@ -109,7 +111,7 @@ def getAvailableSlots(auth, date, gym, activity):
         'sec-fetch-dest': 'empty',
         'sec-fetch-mode': 'cors',
         'sec-fetch-site': 'cross-site',
-        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
+        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36',
     }
 
     params = {
