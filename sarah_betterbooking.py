@@ -46,10 +46,10 @@ booking_successful = 0
 tries = 0
 while not booking_successful:
     if class_slots['spaces'].values[0] > 0:
-        if '401' in better.connswaterAddtoBasket(auth, member_id, str(class_slots['id'].values[0]), date):
-            logger.error('auth issues')
-            break
-        if '422' in better.checkout(auth):
+        logger.info(better.connswaterAddtoBasket(auth, member_id, str(class_slots['id'].values[0]), date))
+        checkout_response = better.checkout(auth)
+        logger.info(checkout_response)
+        if '422' in checkout_response:
             logger.error('Basket empty')
         else:
             booking_successful = 1

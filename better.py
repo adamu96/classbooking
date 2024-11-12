@@ -305,12 +305,11 @@ def viewBookings(auth):
 
 
 if __name__ == '__main__':
-    # print(getAvailableSlots('2024-02-20'))
-    # print(connswaterClasses('Bearer v4.local.lGjbgJkKYg5SUUDc19vuFS3HxiElCsHhyR8i2lxQdeuxmtXJRdyyEY1CVCq76PvVrMIiAiJRWDwX1QObu7TeXU9VF8g4hNDHZ_LniNePjiRnKAkUb74pQfo4ZxWs1YPYhF8uAq5dnipONDkyk0QWua1Cq-0buufkHY3FNwxqq0nBlz_CJRSx2YmB_azs-zrgR1ptMwTyrNqNxOed4w',
-    #                         '2024-11-11',
+    # print(connswaterClasses( 'test', #'Bearer v4.local.SAyn8MyVR9Ywe8Pvw574NM6rFBqSRYTXKXOTNdyIUQx5CwSgtvfHuvwACDo_NR1-3ngOcvYXtbUYGl4zn8Pc6PuJ79JeXx2NYOwjX-jdnGLHFj9T3cbZ_9P5RMwNVeFR2nrkeBdEJo-P5PeleWYwfiO6mKaW1k0WT-gE-XtGKYzIgOrP0PVCtTd5V8VMrZDDh3qHAVgqToCvCARlPw',
+    #                         '2024-11-18',
     #                         'better-gym-connswater',
     #                         'fitness-classes-c'))
     print(connswaterAddtoBasket('Bearer v4.local.SAyn8MyVR9Ywe8Pvw574NM6rFBqSRYTXKXOTNdyIUQx5CwSgtvfHuvwACDo_NR1-3ngOcvYXtbUYGl4zn8Pc6PuJ79JeXx2NYOwjX-jdnGLHFj9T3cbZ_9P5RMwNVeFR2nrkeBdEJo-P5PeleWYwfiO6mKaW1k0WT-gE-XtGKYzIgOrP0PVCtTd5V8VMrZDDh3qHAVgqToCvCARlPw',
                                 2988951,
-                                60921796,
+                                61313807,
                                 '2024-11-11'))
