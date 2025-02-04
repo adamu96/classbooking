@@ -19,9 +19,6 @@ next_week = datetime.today() + timedelta(days=7)
 date = next_week.strftime('%Y-%m-%d')
 day_name = next_week.strftime('%A')
 
-print(day_name, date)
-
-
 # TODO: get preferences for datetime/court
 # TODO: the code should only book a time if the day is included in preferences
 if day_name == 'Saturday' or day_name == 'Sunday': datetime_preferences = pd.DataFrame({'hour': [11, 10, 12, 13, 9],
