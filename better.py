@@ -127,22 +127,20 @@ def getAvailableSlots(auth, date, gym, activity):
     """
     Gets available slots for a given day
     """
-
-    import requests
-
     headers = {
-        'accept': 'application/json',
-        'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8',
-        'authorization': auth,
-        'origin': 'https://bookings.better.org.uk',
-        'referer': f'https://bookings.better.org.uk/location/{gym}/{activity}/{date}/by-time',
-        'sec-ch-ua': '"Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"',
-        'sec-ch-ua-mobile': '?0',
-        'sec-ch-ua-platform': '"macOS"',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'cross-site',
-        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36',
+    'accept': 'application/json',
+    'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8',
+    'authorization': auth,
+    'origin': 'https://bookings.better.org.uk',
+    'priority': 'u=1, i',
+    'referer': f'https://bookings.better.org.uk/location/{gym}/{activity}/{date}/by-time',
+    'sec-ch-ua': '"Not A(Brand";v="8", "Chromium";v="132", "Google Chrome";v="132"',
+    'sec-ch-ua-mobile': '?0',
+    'sec-ch-ua-platform': '"macOS"',
+    'sec-fetch-dest': 'empty',
+    'sec-fetch-mode': 'cors',
+    'sec-fetch-site': 'cross-site',
+    'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36',
     }
 
     params = {
@@ -150,12 +148,13 @@ def getAvailableSlots(auth, date, gym, activity):
     }
 
     response = requests.get(
-        'https://better-admin.org.uk/api/activities/venue/{gym}/activity/{activity}/times',
+        f'https://better-admin.org.uk/api/activities/venue/{gym}/activity/{activity}/times',
         params=params,
         headers=headers,
     )
 
     sessions_text = cleanseResponse(response.text)
+    print(sessions_text)
     sessions_df = pd.DataFrame(ast.literal_eval(sessions_text[:-1]))
     if date == datetime.today().strftime('%Y-%m-%d'):
         sessions_df = sessions_df.transpose()

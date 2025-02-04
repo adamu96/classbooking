@@ -17,7 +17,7 @@ logging.basicConfig(filename=log_file, encoding='utf-8', level=logging.DEBUG)
 logger.info(f'Running Booking: {datetime.today()}')
 
 # credentials
-auth = 'Bearer '+ better.getToken()
+auth = f'Bearer {better.getToken()}'
 member_id = 2945507
 gym = 'indoor-tennis-centre-and-ozone-complex'
 activity = 'tennis-court-indoor'
@@ -38,10 +38,10 @@ court_preferences = pd.DataFrame({'court': [1, 2, 3, 4],
 
 # check available spaces and order by priority
 try:
-    priority_slots = pd.merge(better.getAvailableSlots(auth, date),
+    priority_slots = pd.merge(better.getAvailableSlots(auth, date, gym, activity),
                           datetime_preferences, on='hour', how='inner').sort_values(by='priority')
-except:
-    logger.error('date outside of visible dates')
+except Exception as e:
+    logger.error('Error:', e)
     exit()
 
 booking_successful = 0
