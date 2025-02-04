@@ -2,7 +2,12 @@ import better
 import pandas as pd
 from datetime import datetime, timedelta
 from googleapi import addCalendarEvent, sendGmail
+import logging
 
+logger = logging.getLogger(__name__)
+logging.basicConfig(filename='tennis.log', encoding='utf-8', level=logging.DEBUG)
+
+logger.info(f'Running Booking: {datetime.today()}')
 
 # credentials
 auth = 'Bearer v4.local.TnetacOmHtfxrQasRrhSt33erWXrwXkuYAg7aZHaSzdiUADnVnscZjOKPMraRycryVe0TGcjUKhmyy089YouaHUSMJctU-Bo8TIcJbYg-VZyPBc-odh5Ywq8OuNvWqgQqIif5OjeNNKnhm-4onpqwKv4i7wpGxqElRxB71bTuB5aV52CKduLWkIZl8AUHnyb_GWe5y07OFsakJVhbA'
@@ -29,7 +34,7 @@ try:
     priority_slots = pd.merge(better.getAvailableSlots(auth, date),
                           datetime_preferences, on='hour', how='inner').sort_values(by='priority')
 except:
-    print('date outside of visible dates')
+    logger.error('date outside of visible dates')
     exit()
 
 booking_successful = 0
@@ -44,23 +49,23 @@ while not booking_successful:
             for court in courts.sort_values(by='priority').court:
                 for index, session in courts.iterrows():
                     if session['court'] == court:
-                        print('book:', session['session_id'], 'on', date, 'at', str(slot['hour'])+':00')
-                        print(better.addToBasket(auth, member_id, session['session_id'], date, slot['hour']))
+                        logger.info('book:', session['session_id'], 'on', date, 'at', str(slot['hour'])+':00')
+                        logger.info(better.addToBasket(auth, member_id, session['session_id'], date, slot['hour']))
                         # check response to ensure booking was successful
                         if '422' in better.checkout(auth):
                             print('basket empty')
                         else:
                             booking_successful = 1
-                            print('booking successful')
-                            addCalendarEvent(title='Tennis (auto)',
+                            logger.info('booking successful')
+                            logger.info(addCalendarEvent(title='Tennis (auto)',
                                     location='Ormeau Tennis Courts',
                                     description=f'Court: {court}',
                                     start= f'{date}T{str(slot["hour"])}'+':00:00',
                                     end=f'{date}T{str(slot["hour"]+1)}'+':00:00',
-                                    attendees='margretbarclay10@gmail.com')
-                            sendGmail(date=date,
+                                    attendees='margretbarclay10@gmail.com'))
+                            logger.info(sendGmail(date=date,
                                       time=str(slot['hour'])+':00',
-                                      recipients="adam.urquhart96@gmail.com, margretbarclay10@gmail.com")
+                                      recipients="adam.urquhart96@gmail.com, margretbarclay10@gmail.com"))
                             exit()
                 if booking_successful:
                     break
@@ -68,6 +73,6 @@ while not booking_successful:
             break
     tries+=1
     if tries >= 20: break
-    print('attempt:', tries)
+    logger.error('Attempt:', tries)
 
-if booking_successful == 0: print('no options available')
+if booking_successful == 0: logger.error('no options available')
