@@ -2,6 +2,7 @@ INFO:__main__:Running Booking: 2025-02-04 16:41:03.988568
 DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): better-admin.org.uk:443
 DEBUG:urllib3.connectionpool:https://better-admin.org.uk:443 "POST /api/auth/customer/login HTTP/1.1" 200 None
 ERROR:__main__:date outside of visible dates
+<<<<<<< HEAD
 INFO:__main__:Running Booking: 2025-02-04 22:05:23.638809
 DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): better-admin.org.uk:443
 DEBUG:urllib3.connectionpool:https://better-admin.org.uk:443 "POST /api/auth/customer/login HTTP/1.1" 200 None
@@ -89,3 +90,9 @@ INFO:__main__:None
 INFO:googleapiclient.discovery_cache:file_cache is only supported with oauth2client<4.0.0
 DEBUG:googleapiclient.discovery:URL being requested: POST https://gmail.googleapis.com/gmail/v1/users/me/messages/send?alt=json
 INFO:__main__:{'id': '194d30d0d8f30d26', 'threadId': '194d30d0d8f30d26', 'labelIds': ['UNREAD', 'SENT', 'INBOX']}
+=======
+INFO:__main__:Running Booking: 2025-02-04 16:44:41.295839
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): better-admin.org.uk:443
+DEBUG:urllib3.connectionpool:https://better-admin.org.uk:443 "POST /api/auth/customer/login HTTP/1.1" 200 None
+ERROR:__main__:date outside of visible dates
+>>>>>>> 5dff72c26000192d0e3fc4f4870a8a76bc62481a
