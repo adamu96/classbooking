@@ -1,4 +1,4 @@
-#!/home/adamurquhart/python/tennis_classbooking/venv/bin/python3
+#!/Users/adamurquhart/coding/tennis_classbooking/venv/bin/python3.11
 # -*- coding: utf-8 -*-
 import re
 import sys
