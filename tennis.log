@@ -6,7 +6,17 @@ INFO:__main__:Running Booking: 2024-10-22 19:50:24.135931
 DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): better-admin.org.uk:443
 DEBUG:urllib3.connectionpool:https://better-admin.org.uk:443 "GET /api/activities/venue/indoor-tennis-centre-and-ozone-complex/activity/tennis-court-indoor/times?date=2024-10-29 HTTP/11" 422 None
 ERROR:__main__:date outside of visible dates
+<<<<<<< HEAD
 INFO:__main__:Running Booking: 2025-02-04 15:34:18.659349
 DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): better-admin.org.uk:443
 DEBUG:urllib3.connectionpool:https://better-admin.org.uk:443 "POST /api/auth/customer/login HTTP/11" 200 None
+=======
+INFO:__main__:Running Booking: 2025-02-04 16:02:51.607830
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): better-admin.org.uk:443
+DEBUG:urllib3.connectionpool:https://better-admin.org.uk:443 "POST /api/auth/customer/login HTTP/1.1" 200 None
+ERROR:__main__:date outside of visible dates
+INFO:__main__:Running Booking: 2025-02-04 16:21:31.954744
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): better-admin.org.uk:443
+DEBUG:urllib3.connectionpool:https://better-admin.org.uk:443 "POST /api/auth/customer/login HTTP/1.1" 200 None
+>>>>>>> c3966199d01fec27b6f78688e0e917cdd610966b
 ERROR:__main__:date outside of visible dates
