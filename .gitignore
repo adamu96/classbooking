@@ -3,3 +3,6 @@ credentials.json
 key.json
 desktop_credentials.json
 token.json
+__pycache__/
+*.pyc
+*.pyo
