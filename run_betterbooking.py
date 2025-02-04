@@ -3,9 +3,16 @@ import pandas as pd
 from datetime import datetime, timedelta
 from googleapi import addCalendarEvent, sendGmail
 import logging
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 logger = logging.getLogger(__name__)
-logging.basicConfig(filename='tennis.log', encoding='utf-8', level=logging.DEBUG)
+log_dir = os.getenv("LOG_FOLDER_PATH")
+os.makedirs(log_dir, exist_ok=True)
+log_file = os.path.join(log_dir, "tennis.log")
+
+logging.basicConfig(filename=log_file, encoding='utf-8', level=logging.DEBUG)
 
 logger.info(f'Running Booking: {datetime.today()}')
 

@@ -1,0 +1,4 @@
+INFO:__main__:Running Booking: 2025-02-04 16:41:03.988568
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): better-admin.org.uk:443
+DEBUG:urllib3.connectionpool:https://better-admin.org.uk:443 "POST /api/auth/customer/login HTTP/1.1" 200 None
+ERROR:__main__:date outside of visible dates
