@@ -23,7 +23,7 @@ def connswaterClasses(auth, date, gym, activity):
     }
 
     params = {
-        'date': date,
+        'date': {date},
     }
 
     response = requests.get(
@@ -85,13 +85,14 @@ def connswaterAddtoBasket(auth, member_id, session_id, date):
 
     return response.text
 
+
 def cleanseResponse(response):
     """
     Cleans the text response for processing
     """
     return response.replace('{"data":', "").replace('false', "False").replace('null', '"null"').replace('true', "True")
 
-def getAvailableSlots(auth, date):
+def getAvailableSlots(auth, date, gym, activity):
     """
     Gets available slots for a given day
     """
@@ -103,9 +104,8 @@ def getAvailableSlots(auth, date):
         'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8',
         'authorization': auth,
         'origin': 'https://bookings.better.org.uk',
-        'priority': 'u=1, i',
-        'referer': f'https://bookings.better.org.uk/location/indoor-tennis-centre-and-ozone-complex/tennis-court-indoor/{date}/by-time',
-        'sec-ch-ua': '"Google Chrome";v="129", "Not=A?Brand";v="8", "Chromium";v="129"',
+        'referer': f'https://bookings.better.org.uk/location/{gym}/{activity}/{date}/by-time',
+        'sec-ch-ua': '"Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"',
         'sec-ch-ua-mobile': '?0',
         'sec-ch-ua-platform': '"macOS"',
         'sec-fetch-dest': 'empty',
@@ -119,7 +119,7 @@ def getAvailableSlots(auth, date):
     }
 
     response = requests.get(
-        'https://better-admin.org.uk/api/activities/venue/indoor-tennis-centre-and-ozone-complex/activity/tennis-court-indoor/times',
+        'https://better-admin.org.uk/api/activities/venue/{gym}/activity/{activity}/times',
         params=params,
         headers=headers,
     )
@@ -305,4 +305,11 @@ def viewBookings(auth):
 
 
 if __name__ == '__main__':
-    pass
+    # print(connswaterClasses( 'test', #'Bearer v4.local.SAyn8MyVR9Ywe8Pvw574NM6rFBqSRYTXKXOTNdyIUQx5CwSgtvfHuvwACDo_NR1-3ngOcvYXtbUYGl4zn8Pc6PuJ79JeXx2NYOwjX-jdnGLHFj9T3cbZ_9P5RMwNVeFR2nrkeBdEJo-P5PeleWYwfiO6mKaW1k0WT-gE-XtGKYzIgOrP0PVCtTd5V8VMrZDDh3qHAVgqToCvCARlPw',
+    #                         '2024-11-18',
+    #                         'better-gym-connswater',
+    #                         'fitness-classes-c'))
+    print(connswaterAddtoBasket('Bearer v4.local.SAyn8MyVR9Ywe8Pvw574NM6rFBqSRYTXKXOTNdyIUQx5CwSgtvfHuvwACDo_NR1-3ngOcvYXtbUYGl4zn8Pc6PuJ79JeXx2NYOwjX-jdnGLHFj9T3cbZ_9P5RMwNVeFR2nrkeBdEJo-P5PeleWYwfiO6mKaW1k0WT-gE-XtGKYzIgOrP0PVCtTd5V8VMrZDDh3qHAVgqToCvCARlPw',
+                                2988951,
+                                61313807,
+                                '2024-11-11'))

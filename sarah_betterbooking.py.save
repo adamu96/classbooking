@@ -8,8 +8,8 @@ logging.basicConfig(filename='sarah_better.log', encoding='utf-8', level=logging
 
 logger.info(f'Running Booking: {datetime.today()}')
 # credentials
-auth = 'Bearer v4.local.SAyn8MyVR9Ywe8Pvw574NM6rFBqSRYTXKXOTNdyIUQx5CwSgtvfHuvwACDo_NR1-3ngOcvYXtbUYGl4zn8Pc6PuJ79JeXx2NYOwjX-jdnGLHFj9T3cbZ_9P5RMwNVeFR2nrkeBdEJo-P5PeleWYwfiO6mKaW1k0WT-gE-XtGKYzIgOrP0PVCtTd5V8VMrZDDh3qHAVgqToCvCARlPw'
-member_id = 2988951
+auth = 'Bearer v4.local.lGjbgJkKYg5SUUDc19vuFS3HxiElCsHhyR8i2lxQdeuxmtXJRdyyEY1CVCq76PvVrMIiAiJRWDwX1QObu7TeXU9VF8g4hNDHZ_LniNePjiRnKAkUb74pQfo4ZxWs1YPYhF8uAq5dnipONDkyk0QWua1Cq-0buufkHY3FNwxqq0nBlz_CJRSx2YmB_azs-zrgR1ptMwTyrNqNxOed4w'
+member_id = 2848350
 activity = 'fitness-classes-c'
 
 preferences = pd.DataFrame({'gym': ['better-gym-connswater',
@@ -46,11 +46,9 @@ booking_successful = 0
 tries = 0
 while not booking_successful:
     if class_slots['spaces'].values[0] > 0:
-        logger.info(better.connswaterAddtoBasket(auth, member_id, str(class_slots['id'].values[0]), date))
-        checkout_response = better.checkout(auth)
-        logger.info(checkout_response)
-        if '422' in checkout_response:
-            logger.error('Basket empty')
+        print(better.connswaterAddtoBasket(auth, member_id, str(class_slots['id'].values[0]), date))
+        if '422' in better.checkout(auth):
+         logger.error('Basket empty')
         else:
             booking_successful = 1
             break
