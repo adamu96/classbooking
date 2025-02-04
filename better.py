@@ -4,6 +4,37 @@ import ast
 from datetime import datetime, timedelta
 import time
 import requests
+import json
+
+def getToken():
+    headers = {
+        'accept': 'application/json',
+        'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8',
+        'content-type': 'application/json',
+        'origin': 'https://bookings.better.org.uk',
+        'priority': 'u=1, i',
+        'referer': 'https://bookings.better.org.uk/',
+        'sec-ch-ua': '"Not A(Brand";v="8", "Chromium";v="132", "Google Chrome";v="132"',
+        'sec-ch-ua-mobile': '?0',
+        'sec-ch-ua-platform': '"macOS"',
+        'sec-fetch-dest': 'empty',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-site': 'cross-site',
+        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36',
+    }
+
+    json_data = {
+        'username': 'BET4470679',
+        'password': 'Jordanstown-125',
+    }
+
+    response = requests.post('https://better-admin.org.uk/api/auth/customer/login', headers=headers, json=json_data)
+
+    token = json.loads(response.text)['token']
+
+    return token
+
+
 
 def connswaterClasses(auth, date, gym, activity):
     headers = {

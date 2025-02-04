@@ -5,7 +5,7 @@ from googleapi import addCalendarEvent, sendGmail
 
 
 # credentials
-auth = 'Bearer v4.local.TnetacOmHtfxrQasRrhSt33erWXrwXkuYAg7aZHaSzdiUADnVnscZjOKPMraRycryVe0TGcjUKhmyy089YouaHUSMJctU-Bo8TIcJbYg-VZyPBc-odh5Ywq8OuNvWqgQqIif5OjeNNKnhm-4onpqwKv4i7wpGxqElRxB71bTuB5aV52CKduLWkIZl8AUHnyb_GWe5y07OFsakJVhbA'
+auth = 'Bearer '+ better.getToken()
 member_id = 2945507
 gym = 'indoor-tennis-centre-and-ozone-complex'
 activity = 'tennis-court-indoor'
@@ -13,7 +13,10 @@ activity = 'tennis-court-indoor'
 next_week = datetime.today() + timedelta(days=7)
 date = next_week.strftime('%Y-%m-%d')
 day_name = next_week.strftime('%A')
-    
+
+print(day_name, date)
+
+
 # TODO: get preferences for datetime/court
 # TODO: the code should only book a time if the day is included in preferences
 if day_name == 'Saturday' or day_name == 'Sunday': datetime_preferences = pd.DataFrame({'hour': [11, 10, 12, 13, 9],

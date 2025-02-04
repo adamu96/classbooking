@@ -1,6 +1,5 @@
 import datetime
 import os.path
-
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
@@ -146,10 +145,12 @@ def sendGmail(date, time, recipients):
   return send_message
 
 if __name__ == "__main__":
-    # addCalendarEvent(title='Tennis (auto)',
-    #     location='Ormeau Tennis Courts',
-    #     description=f'Court: 1',
-    #     start='2024-10-09T13:00:00',
-    #     end='2024-10-09T14:00:00',
-    #     attendees='margretbarclay10@gmail.com')
-    sendGmail(date='2024-10-14', time=10, recipients="adam.urquhart96@gmail.com, margretbarclay10@gmail.com")
+    print('starting...')
+    print(getAuth())
+    addCalendarEvent(title='Tennis (auto)',
+        location='Ormeau Tennis Courts',
+        description=f'Court: 1',
+        start='2025-02-09T13:00:00',
+        end='2025-02-09T14:00:00',
+        attendees='margretbarclay10@gmail.com')
+    # sendGmail(date='2025-02-14', time=10, recipients="adam.urquhart96@gmail.com, margretbarclay10@gmail.com")
