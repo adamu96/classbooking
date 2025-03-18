@@ -57,7 +57,7 @@ while not booking_successful:
             for court in courts.sort_values(by='priority').court:
                 for index, session in courts.iterrows():
                     if session['court'] == court:
-                        logger.info(f'book: {session['session_id']} on {date} at {str(slot['hour'])}:00')
+                        logger.info(f"book: {session['session_id']} on {date} at {str(slot['hour'])}:00")
                         logger.info(better.addToBasket(auth, member_id, session['session_id'], date, slot['hour']))
                         # check response to ensure booking was successful
                         checkout = better.checkout(auth)
@@ -73,8 +73,8 @@ while not booking_successful:
                             #         start= f'{date}T{str(slot["hour"])}'+':00:00',
                             #         end=f'{date}T{str(slot["hour"]+1)}'+':00:00',
                             #         attendees='margretbarclay10@gmail.com'))
-                            send_gmail(subject=f"Tennis booked: {date} {str(slot['hour'])}:00",
-                                       message="Get yourselves out there and have fun.")
+                            # send_gmail(subject=f"Tennis booked: {date} {str(slot['hour'])}:00",
+                            #            message="Get yourselves out there and have fun.")
                             exit()
                 if booking_successful:
                     break
