@@ -1,7 +1,8 @@
 import better
 import pandas as pd
 from datetime import datetime, timedelta
-from googleapi import addCalendarEvent, sendGmail
+from googleapi import addCalendarEvent
+from gmail import send_gmail
 import logging
 import os
 from dotenv import load_dotenv
@@ -70,9 +71,8 @@ while not booking_successful:
                                     start= f'{date}T{str(slot["hour"])}'+':00:00',
                                     end=f'{date}T{str(slot["hour"]+1)}'+':00:00',
                                     attendees='margretbarclay10@gmail.com'))
-                            logger.info(sendGmail(date=date,
-                                      time=str(slot['hour'])+':00',
-                                      recipients="adam.urquhart96@gmail.com, margretbarclay10@gmail.com"))
+                            send_gmail(subject=f"Tennis booked: {date} {str(slot['hour'])}:00",
+                                       message="Get yourselves out there and have fun.")
                             exit()
                 if booking_successful:
                     break

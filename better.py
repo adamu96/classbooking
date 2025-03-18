@@ -3,7 +3,6 @@ import pandas as pd
 import ast
 from datetime import datetime, timedelta
 import time
-import requests
 import json
 
 def getToken():
