@@ -57,12 +57,14 @@ while not booking_successful:
             for court in courts.sort_values(by='priority').court:
                 for index, session in courts.iterrows():
                     if session['court'] == court:
-                        logger.info('book:', session['session_id'], 'on', date, 'at', str(slot['hour'])+':00')
+                        logger.info(f'book: {session['session_id']} on {date} at {str(slot['hour'])}:00')
                         logger.info(better.addToBasket(auth, member_id, session['session_id'], date, slot['hour']))
                         # check response to ensure booking was successful
-                        if '422' in better.checkout(auth):
+                        checkout = better.checkout(auth)
+                        if '422' in checkout:
                             print('basket empty')
                         else:
+                            print(checkout)
                             booking_successful = 1
                             logger.info('booking successful')
                             # logger.info(addCalendarEvent(title='Tennis (auto)',
