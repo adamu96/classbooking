@@ -65,12 +65,12 @@ while not booking_successful:
                         else:
                             booking_successful = 1
                             logger.info('booking successful')
-                            logger.info(addCalendarEvent(title='Tennis (auto)',
-                                    location='Ormeau Tennis Courts',
-                                    description=f'Court: {court}',
-                                    start= f'{date}T{str(slot["hour"])}'+':00:00',
-                                    end=f'{date}T{str(slot["hour"]+1)}'+':00:00',
-                                    attendees='margretbarclay10@gmail.com'))
+                            # logger.info(addCalendarEvent(title='Tennis (auto)',
+                            #         location='Ormeau Tennis Courts',
+                            #         description=f'Court: {court}',
+                            #         start= f'{date}T{str(slot["hour"])}'+':00:00',
+                            #         end=f'{date}T{str(slot["hour"]+1)}'+':00:00',
+                            #         attendees='margretbarclay10@gmail.com'))
                             send_gmail(subject=f"Tennis booked: {date} {str(slot['hour'])}:00",
                                        message="Get yourselves out there and have fun.")
                             exit()
