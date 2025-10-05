@@ -7,6 +7,7 @@ import logging
 from logging_config import setup_logging
 import os
 from dotenv import load_dotenv
+from packages.notifications import send_pushover_notification
 
 load_dotenv()
 setup_logging()
@@ -38,6 +39,7 @@ try:
                           datetime_preferences, on='hour', how='inner').sort_values(by='priority')
 except Exception as e:
     logger.error('Error:', e)
+    send_pushover_notification(e, 'Tennis Booking Failed')
     exit()
 
 booking_successful = 0
@@ -62,6 +64,8 @@ while not booking_successful:
                             print(checkout)
                             booking_successful = 1
                             logger.info('booking successful')
+                            send_pushover_notification(f"Tennis booked: {date} {str(slot['hour'])}:00", 
+                                                       'Tennis booking successful')
                             # send_gmail(subject=f"Tennis booked: {date} {str(slot['hour'])}:00",
                                         #    message="Get yourselves out there and have fun.")
                             exit()
@@ -73,4 +77,6 @@ while not booking_successful:
     if tries >= 20: break
     logger.error('Attempt:', tries)
 
-if booking_successful == 0: logger.error('no options available')
+if booking_successful == 0: 
+    logger.error('no options available')
+    send_pushover_notification('No options available', 'Tennis booking failed')

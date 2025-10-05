@@ -43,23 +43,20 @@ class beterClient():
             if not token:
                 raise ValueError('Token not found in response')
         except requests.exceptions.ConnectionError:
-                rasie ("Failed to connect to the API. Check your network connection.")
+                raise BaseException("Failed to connect to the API. Check your network connection.")
         except requests.exceptions.HTTPError as e:
             if response.status_code == 401:
-                print("Invalid credentials. Please check username and password.")
+                raise BaseException("Invalid credentials. Please check username and password.")
             elif response.status_code == 403:
-                print("Access forbidden.")
+                raise BaseException("Access forbidden.")
             else:
-                print(f"HTTP error occurred: {e}")
-            return None
+                raise BaseException(f"HTTP error occurred: {e}")
             
         except requests.exceptions.RequestException as e:
-            print(f"An error occurred: {e}")
-            return None
-            
+            raise BaseException(f"An error occurred: {e}")
+        
         except ValueError as e:
-            print(f"Error parsing response: {e}")
-            return None
+            raise BaseException(f"Error parsing response: {e}")
         
         self.auth = f'Bearer {token}'
         self.member_id = os.getenv("MEMBER_ID")
