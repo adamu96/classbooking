@@ -156,4 +156,5 @@ def send_emergency_notification_with_actions():
     response = requests.post(url, data=data)
     return response.json()
 
-debug_pushover_notification()
+if __name__ == '__main__':
+    debug_pushover_notification()
