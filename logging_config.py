@@ -11,10 +11,7 @@ def setup_logging(log_folder_path=None, log_level=logging.DEBUG):
         log_level: Logging level (default: DEBUG)
     """
     # Get log directory from parameter or environment variable
-    log_dir = log_folder_path or os.getenv("LOG_FOLDER_PATH")
-    
-    if not log_dir:
-        raise ValueError("LOG_FOLDER_PATH must be set or provided as parameter")
+    log_dir = 'logs'
     
     os.makedirs(log_dir, exist_ok=True)
     log_file = os.path.join(log_dir, "tennis.log")

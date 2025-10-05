@@ -202,7 +202,17 @@ class beterClient():
             
             return sessions_df
         except requests.exceptions.RequestException as e:
-            raise Exception(f"An error occurred: {e}")
+            if e.response.status_code == 422:
+                raise ValueError(
+                    f"Invalid booking parameters. Date: {date}, Gym: {gym}, Activity: {activity}. "
+                    f"The date might be outside the allowed booking window."
+                )
+            elif e.response.status_code == 401:
+                raise ValueError("Authentication failed - authorization token may have expired")
+            elif e.response.status_code == 404:
+                raise ValueError(f"Venue or activity not found. Check gym name: {gym}, activity: {activity}")
+            else:
+                raise ValueError(f"HTTP error {e.response.status_code}: {str(e)}")
         
         except ValueError as e:
             raise Exception(f"Error parsing response: {e}")
