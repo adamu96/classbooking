@@ -1,6 +1,7 @@
 import logging
 from logging.handlers import RotatingFileHandler
 import os
+from dotenv import load_dotenv
 
 def setup_logging(log_folder_path=None, log_level=logging.DEBUG):
     """
@@ -11,7 +12,8 @@ def setup_logging(log_folder_path=None, log_level=logging.DEBUG):
         log_level: Logging level (default: DEBUG)
     """
     # Get log directory from parameter or environment variable
-    log_dir = 'logs'
+    load_dotenv()
+    log_dir = os.getenv('LOG_FOLDER_PATH')
     
     os.makedirs(log_dir, exist_ok=True)
     log_file = os.path.join(log_dir, "tennis.log")

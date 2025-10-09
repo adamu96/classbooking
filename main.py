@@ -25,16 +25,16 @@ day_name = next_week.strftime('%A')
 
 # TODO: get preferences for datetime/court
 # TODO: the code should only book a time if the day is included in preferences
-if day_name == 'Saturday' or day_name == 'Sunday': datetime_preferences = pd.DataFrame({'hour': [11, 10, 12, 13, 9],
-                                                                                        'priority': [1, 2, 3, 4, 5]})
-else: datetime_preferences = pd.DataFrame({'hour': [18, 19, 17],
-                                           'priority': [1, 2, 3]})
-
-court_preferences = pd.DataFrame({'court': [1, 2, 3, 4], 
-                                  'priority': [4, 1, 2, 3]})
-
-# check available spaces and order by priority
 try:
+    if day_name == 'Saturday' or day_name == 'Sunday': datetime_preferences = pd.DataFrame({'hour': [11, 10, 12, 13, 9],
+                                                                                            'priority': [1, 2, 3, 4, 5]})
+    else: datetime_preferences = pd.DataFrame({'hour': [18, 19, 17],
+                                            'priority': [1, 2, 3]})
+
+    court_preferences = pd.DataFrame({'court': [1, 2, 3, 4], 
+                                    'priority': [4, 1, 2, 3]})
+
+    # check available spaces and order by priority
     priority_slots = pd.merge(better.getAvailableSlots(date, gym, activity),
                           datetime_preferences, on='hour', how='inner').sort_values(by='priority')
 
